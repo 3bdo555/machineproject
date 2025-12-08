@@ -46,7 +46,7 @@ print("\nCluster assignments (first 5 rows):")
 print(df[['Survived', 'Age', 'Fare', 'cluster']].head())
 
 
-centers_scaled = km.clustercenters_
+centers_scaled = km.cluster_centers_
 centers_original = scaler.inverse_transform(centers_scaled)
 centers_df = pd.DataFrame(centers_original, columns=features.columns)
 print("\nCluster centers (original scale):")
