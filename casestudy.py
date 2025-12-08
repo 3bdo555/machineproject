@@ -12,7 +12,6 @@ df = kagglehub.load_dataset(
   "yasserh/titanic-dataset",
   file_path,
 )
-
 print("Initial Dataset Info:")
 print(df.info())
 print("\nFirst 5 rows:")
@@ -36,6 +35,11 @@ print(df.info())
 print("\nMissing Values After Cleaning:")
 print(df.isnull().sum())
 
+df.to_csv('titanic_cleaned.csv', index=False)   
+print("SAVED")
+
+
+
 # Explore
 print("\nSummary Statistics:")
 print(df.describe())
@@ -52,6 +56,7 @@ print((df.groupby('Sex', observed=False)['Survived'].mean() * 100).round(2))
 numeric_df = df.select_dtypes(include=[np.number])
 print("\nCorrelation Matrix:")
 print(numeric_df.corr().round(3))
+
 
 # Visualization
 sns.set(style="whitegrid")
@@ -93,4 +98,5 @@ plt.figure(figsize=(8, 6))
 sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm')
 plt.title('Correlation Heatmap')
 plt.show()
-df.head()
+
+print(df.head())
