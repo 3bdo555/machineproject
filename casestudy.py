@@ -12,12 +12,13 @@ df = kagglehub.load_dataset(
   "yasserh/titanic-dataset",
   file_path,
 )
-print("Initial Dataset Info:")
+print(" Dataset Info: ")
 print(df.info())
-print("\nFirst 5 rows:")
+print("\nFirst 5 rows: ")
 print(df.head())
 
-# Cleaning
+#clean
+
 df['Age'] = df['Age'].fillna(df['Age'].median())                   
 df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])    
 df['Fare'] = df['Fare'].fillna(df['Fare'].median())
@@ -36,11 +37,13 @@ print("\nMissing Values After Cleaning:")
 print(df.isnull().sum())
 
 df.to_csv('titanic_cleaned.csv', index=False)   
-print("SAVED")
+
+print("****SAVED****")
 
 
 
-# Explore
+#Explore
+
 print("\nSummary Statistics:")
 print(df.describe())
 
@@ -58,7 +61,7 @@ print("\nCorrelation Matrix:")
 print(numeric_df.corr().round(3))
 
 
-# Visualization
+#Visualize
 sns.set(style="whitegrid")
 
 plt.figure(figsize=(6, 4))
@@ -84,14 +87,6 @@ plt.show()
 plt.figure(figsize=(8, 4))
 sns.histplot(df['Fare'], kde=True, bins=30)
 plt.title('Fare Distribution')
-plt.show()
-
-plt.figure(figsize=(6, 4))
-sns.boxplot(x='Survived', y='Age', data=df)
-plt.title('Age by Survival')
-plt.show()
-
-sns.pairplot(numeric_df, hue='Survived')
 plt.show()
 
 plt.figure(figsize=(8, 6))

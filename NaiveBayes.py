@@ -5,8 +5,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
 # Load the dataset
-file_path = r'C:\Users\3bode\Desktop\MACHINEPROJECT\titanic_cleaned.csv'  
-data = pd.read_csv(file_path)
+data = pd.read_csv("titanic_cleaned.csv")
 
 # Handle missing values (simple strategy: fill missing 'Age' values with the mean)
 data['Age'] = data['Age'].fillna(data['Age'].mean())
